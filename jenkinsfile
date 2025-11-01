@@ -20,4 +20,11 @@ pipeline {
             }
         }
     }
+
+    post {
+        always {
+            sh 'pkill -f "node" || true'
+        }
+    }
+
 }
