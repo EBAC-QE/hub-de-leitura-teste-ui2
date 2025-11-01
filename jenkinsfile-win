@@ -18,7 +18,7 @@ pipeline {
             steps {
                 dir('hub-de-leitura-integrado2') {
                     bat '''
-                    npm install
+                    call npm install
                     start /B npm start
                     '''
                 }
@@ -37,7 +37,7 @@ pipeline {
         stage("Instalar dependencias do projeto de teste") {
             steps {
                 dir('hub-de-leitura-teste-ui2') {
-                    bat 'npm install'
+                    bat 'call npm install'
                 }
             }
         }
