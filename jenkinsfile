@@ -15,8 +15,32 @@ pipeline {
             steps {
                 dir('hub-de-leitura-integrado2') {
                     sh 'npm install'
-                    sh 'npm start'
+                    sh 'nohup npm start &'
                 }
+            }
+        }
+
+        stage("Clonar o projeto de teste") {
+            steps {
+                sh 'rm -rf hub-de-leitura-teste-ui2 || true'
+                sh 'git clone https://github.com/EBAC-QE/hub-de-leitura-teste-ui2.git'
+            }
+        }
+
+        stage("Instalar dependencias do projeto de teste") {
+            steps {
+                dir('hub-de-leitura-teste-ui2') {
+                    sh 'npm install'
+                }
+            }
+        }
+
+        stage('Executar os testes automatizados') {
+            steps {
+                dir('hub-de-leitura-teste-ui2') {
+                    sh 'npm test'
+                }
+
             }
         }
     }
