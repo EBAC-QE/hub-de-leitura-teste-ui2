@@ -6,11 +6,10 @@ pipeline {
 
         stage("Clonar o hub de leitura integrado") {
             steps {
-                 bat '''
+                bat '''
                     if exist hub-de-leitura-integrado2 rmdir /s /q hub-de-leitura-integrado2
                     git clone https://github.com/EBAC-QE/hub-de-leitura-integrado2.git
-                 '''
-                 
+                '''
             }
         }
 
@@ -18,8 +17,8 @@ pipeline {
             steps {
                 dir('hub-de-leitura-integrado2') {
                     bat '''
-                    call npm install
-                    start /B npm start
+                        call npm install 
+                        start /B npm start
                     '''
                 }
             }
@@ -28,8 +27,8 @@ pipeline {
         stage("Clonar o projeto de teste") {
             steps {
                 bat '''
-                if exist hub-de-leitura-teste-ui2 rmdir /s /q hub-de-leitura-teste-ui2
-                git clone https://github.com/EBAC-QE/hub-de-leitura-teste-ui2.git
+                    if exist hub-de-leitura-teste-ui2 rmdir /s /q hub-de-leitura-teste-ui2
+                    git clone https://github.com/EBAC-QE/hub-de-leitura-teste-ui2.git
                 '''
             }
         }
