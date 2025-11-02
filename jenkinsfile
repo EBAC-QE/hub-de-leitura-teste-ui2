@@ -49,6 +49,7 @@ pipeline {
         always {
             dir('hub-de-leitura-teste-ui2') {
                 archiveArtifacts artifacts: 'cypress/screenshots/**/*.*,cypress/videos/**/*.*', allowEmptyArchive: true
+                allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
             }
           
             sh 'pkill -f "node" || true' 
