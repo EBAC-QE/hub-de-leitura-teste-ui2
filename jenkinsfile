@@ -47,7 +47,9 @@ pipeline {
 
     post {
         always {
+            dir('hub-de-leitura-teste-ui2') {
             archiveArtifacts artifacts: 'cypress/screenshots/**/*.*,cypress/videos/**/*.*', allowEmptyArchive: true
+            }
             sh 'pkill -f "node" || true' 
         }
     }
