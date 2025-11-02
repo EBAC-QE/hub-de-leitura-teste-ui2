@@ -48,7 +48,7 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: 'cypress/screenshots/**/*.*,cypress/videos/**/*.*', allowEmptyArchive: true
-            sh 'pkill -f "node" || true'
+            sh 'pkill -f "node" || true' 
         }
     }
 
